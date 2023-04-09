@@ -67,21 +67,12 @@
         --top_reward: 0px;
         --left_reward: 0px;
 
-        --top_surprise: 0px;
-        --left_surprise: 0px;
 
         --left_horizontal: 0px;
         --top_vertical: 0px;
     }
 
-    .surprise {
-        /* surprise will be in the middle of the screen in catch trials*/
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        height: 50px;
-        width: 50px;
-    }
+
 
     .fixation {
         /* plus fixation will be in the middle of the screen*/
@@ -110,6 +101,11 @@
         width: 217px;
     }
 
+    .block_example {
+        height: 180px;
+        width: 180px;
+    }
+
     img.card_left {
         position: fixed;
         height: 180px;
@@ -126,20 +122,20 @@
         top: var(--top_card);
     }
 
-    img.card_top {
+    img.card_middle_left {
         position: fixed;
         height: 180px;
         width: 180px;
-        left: var(--left_horizontal);
-        top: var(--top_vertical);
+        left: var(--middle_left_card);
+        top: var(--top_card);
     }
 
-    img.card_bottom {
+    img.card_middle_right {
         position: fixed;
         height: 180px;
         width: 180px;
-        left: var(--left_horizontal);
-        bottom: var(--top_vertical);
+        right: var(--middle_right_card);
+        top: var(--top_card);
     }
 
 

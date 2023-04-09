@@ -69,6 +69,9 @@
 
         --top_surprise: 0px;
         --left_surprise: 0px;
+
+        --left_horizontal: 0px;
+        --top_vertical: 0px;
     }
 
     .surprise {
@@ -110,7 +113,7 @@
     img.card_left {
         position: fixed;
         height: 180px;
-        width: 130px;
+        width: 180px;
         left: var(--left_card);
         top: var(--top_card);
     }
@@ -118,9 +121,25 @@
     img.card_right {
         position: fixed;
         height: 180px;
-        width: 130px;
+        width: 180px;
         right: var(--right_card);
         top: var(--top_card);
+    }
+
+    img.card_top {
+        position: fixed;
+        height: 180px;
+        width: 180px;
+        left: var(--left_horizontal);
+        top: var(--top_vertical);
+    }
+
+    img.card_bottom {
+        position: fixed;
+        height: 180px;
+        width: 180px;
+        left: var(--left_horizontal);
+        bottom: var(--top_vertical);
     }
 
 

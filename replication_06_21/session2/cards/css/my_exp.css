@@ -102,38 +102,38 @@
     }
 
     .block_example {
-        height: 180px;
-        width: 180px;
+        height: 130px;
+        width: 130px;
     }
 
     img.card_left {
         position: fixed;
-        height: 180px;
-        width: 180px;
+        height: 130px;
+        width: 130px;
         left: var(--left_card);
         top: var(--top_card);
     }
 
     img.card_right {
         position: fixed;
-        height: 180px;
-        width: 180px;
+        height: 130px;
+        width: 130px;
         right: var(--right_card);
         top: var(--top_card);
     }
 
     img.card_middle_left {
         position: fixed;
-        height: 180px;
-        width: 180px;
+        height: 130px;
+        width: 130px;
         left: var(--middle_left_card);
         top: var(--top_card);
     }
 
     img.card_middle_right {
         position: fixed;
-        height: 180px;
-        width: 180px;
+        height: 130px;
+        width: 130px;
         right: var(--middle_right_card);
         top: var(--top_card);
     }

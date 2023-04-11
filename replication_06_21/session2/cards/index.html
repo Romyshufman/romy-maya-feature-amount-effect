@@ -61,10 +61,10 @@
         root.style.setProperty('--lower3', window.screen.height / 2 - vis_angle_px + "px");
 
         //---------------------------------------------------------------------------------------------
-        root.style.setProperty('--left_card', window.screen.width / 2 - 425 + "px");
-        root.style.setProperty('--right_card', window.screen.width / 2 -  425 + "px");
-        root.style.setProperty('--middle_left_card', window.screen.width / 2 - 200 + "px");
-        root.style.setProperty('--middle_right_card', window.screen.width / 2 - 200 + "px");
+        root.style.setProperty('--left_card', window.screen.width / 2 - 350 + "px");
+        root.style.setProperty('--right_card', window.screen.width / 2 -  350 + "px");
+        root.style.setProperty('--middle_left_card', window.screen.width / 2 - 160 + "px");
+        root.style.setProperty('--middle_right_card', window.screen.width / 2 - 160 + "px");
 
         root.style.setProperty('--top_card', window.screen.height / 2 - 90 + "px");
         root.style.setProperty('--top_reward', window.screen.height / 2 + "px");
@@ -91,8 +91,8 @@
         var example_deck2= ['images/practice_elements/parallel_brown_plus.png', 'images/practice_elements/trapezoid_fuchsia_x.png', 'images/practice_elements/parallel_fuchsia_plus.png', 'images/practice_elements/trapezoid_brown_x.png', 'images/practice_elements/trapezoid_brown_plus.png', 'images/practice_elements/parallel_fuchsia_x.png', 'images/practice_elements/trapezoid_fuchsia_plus.png', 'images/practice_elements/parallel_brown_x.png']
         var practice_deck_images = [example_deck0,example_deck1,example_deck2]
         //2D aaray- array i contains the cards for bloc type i
-        var test_deck0=['images/test_elements/pink_triangle.png', 'images/test_elements/green_triangle.png']
-        var test_deck1= ['images/test_elements/red_rhombus.png', 'images/test_elements/yellow_pentagon.png','images/test_elements/red_pentagon.png', 'images/test_elements/yellow_rhombus.png']
+        var test_deck0=['images/test_elements/pink_blank_triangle.png', 'images/test_elements/green_blank_triangle.png']
+        var test_deck1= ['images/test_elements/red_rhombus.png', 'images/test_elements/yellow_hexagon.png','images/test_elements/red_hexagon.png', 'images/test_elements/yellow_rhombus.png']
         var test_deck2= ['images/test_elements/blue_circle_x.png',
         'images/test_elements/orange_square_plus.png',
          'images/test_elements/orange_circle_x.png',
@@ -103,6 +103,20 @@
            'images/test_elements/blue_circle_plus.png' 
             ]
         var test_deck_images = [test_deck0,test_deck1,test_deck2]
+
+        var reward_deck0=['images/reward_elements/pink_blank_triangle.png', 'images/reward_elements/green_blank_triangle.png']
+        var reward_deck1= ['images/reward_elements/red_rhombus.png', 'images/reward_elements/yellow_hexagon.png','images/reward_elements/red_hexagon.png', 'images/reward_elements/yellow_rhombus.png']
+        var reward_deck2= ['images/reward_elements/blue_circle_x.png',
+        'images/reward_elements/orange_square_plus.png',
+         'images/reward_elements/orange_circle_x.png',
+         'images/reward_elements/blue_square_plus.png',
+         'images/reward_elements/blue_square_x.png',
+         'images/reward_elements/orange_circle_plus.png',
+          'images/reward_elements/orange_square_x.png',
+           'images/reward_elements/blue_circle_plus.png' 
+            ]
+        var reward_deck_images = [reward_deck0,reward_deck1,reward_deck2]
+
         var reward_images = ['images/zero_coins.png', 'images/won1-no-back1.png']
         /* setting the locations to randomize from */
         var locations = ["<img class='a' src=", "<img class='b' src=", "<img class='c' src=", "<img class='d' src=", "<img class='e' src=", "<img class='f' src=", "<img class='g' src=", "<img class='h' src=", "<img class='i' src=", "<img class='j' src=", "<img class='k' src=", "<img class='l' src=",]
@@ -189,13 +203,13 @@
         var instructions_test = {
             type: 'survey-multi-choice',
             questions: [
-                { prompt: "What is the size of a card deck?", name: 'deck_size', correct: '4', options: Q1_2_options, required: true },
-                { prompt: "How many cards are presented on each step?", name: 'cards_step', correct: '2', options: Q1_2_options, required: true },
-                { prompt: "How do you choose a card?", name: 'choose_card', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
-                { prompt: "Some cards are better than others.", name: 'better_cards', correct: 'True', options: Q4_5_options, required: true },
-                { prompt: "How ‘good’ or ‘bad’ a card is will change along the game.", name: 'value_change', correct: 'False', options: Q4_5_options, required: true },
-                { prompt: "What is the goal in the game?", name: 'game_goal', correct: 'The goal is to learn which card is better', options: Q6_options, required: true },
-                { prompt: "If one card leads you to more money, it means the other cards will probably lead you to less money ", name: 'value_independence', correct: 'False', options: Q7_options, required: true },
+                { prompt: "What is the size of a card deck?", name: 'deck_size', correct: "4", options: Q1_2_options, required: true },
+                { prompt: "How many cards are presented on each step?", name: 'cards_step', correct: "2", options: Q1_2_options, required: true },
+                { prompt: "How do you choose a card?", name: 'choose_card', correct: "Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.", options: Q3_options, required: true },
+                { prompt: "Some cards are better than others.", name: 'better_cards', correct: "True", options: Q4_5_options, required: true },
+                { prompt: "How ‘good’ or ‘bad’ a card is will change along the game.", name: 'value_change', correct: "False", options: Q4_5_options, required: true },
+                { prompt: "What is the goal in the game?", name: 'game_goal', correct: "The goal is to learn which card is better", options: Q6_options, required: true },
+                { prompt: "If one card leads you to more money, it means the other cards will probably lead you to less money ", name: 'value_independence', correct: "False", options: Q7_options, required: true },
                 { prompt: "If you use the RIGHT and not the LEFT response keys, you might win more", name: 'location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning.", options: Q8_options, required: true },
                 { prompt: "when do you if tou got a coin from choosing a shape?", name: 'location_value', correct: "at the end of the block", options: Q9_options, required: true },
 
@@ -311,7 +325,10 @@
                 } 
                 else{
                     selected = 0
-                    left_with_tag = "<img class='card_left' src='" + left_card + "'>"
+                    card_selected = test_deck_images[block_type].indexOf(left_card)
+                    //left_with_tag = "<img class='card_left' src='" + left_card + "'>"
+                    left_to_show = reward_deck_images[block_type][card_selected]
+                    left_with_tag = "<img class='card_left' src='" + left_to_show + "'>"
                 }
             }
             else if (last_choice == 'd') {
@@ -320,7 +337,10 @@
                 } 
                 else{
                     selected = 1
-                    mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_card + "'>"
+                    card_selected = test_deck_images[block_type].indexOf(mid_left_card)
+                    // mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_card + "'>"
+                    mid_left_to_show = reward_deck_images[block_type][card_selected]
+                    mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_to_show + "'>"
                 }
             }
             else if (last_choice == 'j') {
@@ -329,7 +349,10 @@
                 } 
                 else{
                     selected = 2
-                    mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_card + "'>"
+                    card_selected = test_deck_images[block_type].indexOf(mid_right_card)
+                    //mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_card + "'>"
+                    mid_right_to_show = reward_deck_images[block_type][card_selected]
+                    mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_to_show + "'>"
                 }
             }
             else if (last_choice == 'k') {
@@ -338,7 +361,10 @@
                 } 
                 else{
                     selected = 3
-                    right_with_tag = "<img class='card_right' src='" + right_card + "'>"
+                    card_selected = test_deck_images[block_type].indexOf(right_card)
+                    //right_with_tag = "<img class='card_right' src='" + right_card + "'>"
+                    right_to_show = reward_deck_images[block_type][card_selected]
+                    right_with_tag = "<img class='card_right' src='" + right_to_show + "'>"
                 }
             }
             else {
@@ -357,22 +383,30 @@
 
         function show_reward (){
             key_selected = jsPsych.data.getLastTrialData().values()[0].key_selected
-
             left_with_tag = "<img class='card_left' src='" + background + "'>"
             mid_left_with_tag = "<img class='card_middle_left' src='" + background + "'>"
             mid_right_with_tag = "<img class='card_middle_right' src='" + background + "'>"
             right_with_tag = "<img class='card_right' src='" + background + "'>"
+            card_selected = jsPsych.data.getLastTrialData().values()[0].card_selected
 
             if (key_selected == 0) {
+                //left_with_tag = "<img class='card_left' src='" + left_card + "'>"
+                left_card = reward_deck_images[block_type][card_selected]
                 left_with_tag = "<img class='card_left' src='" + left_card + "'>"
             }
             else if (key_selected == 1) {
+                //mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_card + "'>"
+                mid_left_card = reward_deck_images[block_type][card_selected]
                 mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_card + "'>"
             }
             else if (key_selected == 2) {
+                //mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_card + "'>"
+                mid_right_card = reward_deck_images[block_type][card_selected]
                 mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_card + "'>"
             }
             else if (key_selected == 3) {
+                //right_with_tag = "<img class='card_right' src='" + right_card + "'>"
+                right_card = reward_deck_images[block_type][card_selected]
                 right_with_tag = "<img class='card_right' src='" + right_card + "'>"
             }
             else if (invalid==true) {
@@ -382,12 +416,11 @@
             else {
                 return '<div style="font-size:40px;">Please respond faster!</div>'  + '<p><b>Press SPACE to continue</b></p>'
             }
-            card_selected = jsPsych.data.getLastTrialData().values()[0].card_selected
             prob_reward = FB_matrix[selected][current_cards_exp_trial];
             prob_unreward = 1 - prob_reward;
             reward = jsPsych.randomization.sampleWithReplacement([0, 1], 1, [prob_unreward, prob_reward])[0];
             reward_to_show = "<img class=reward src='" + reward_images[reward] + "'>"
-            return left_with_tag + mid_left_with_tag + mid_right_with_tag + right_with_tag  + reward_to_show  + '<br><br><br><br><br><br><br><br><br><br><p><b>Press SPACE to continue</b></p>'
+            return left_with_tag + mid_left_with_tag + mid_right_with_tag + right_with_tag  + reward_to_show  + '<br><br><br><br><br><br><br><br><p><b>Press SPACE to continue</b></p>'
         }
 
         function images_for_block_start() {
@@ -650,8 +683,8 @@
         };
 
         var full_procedure_cards = {
-            timeline: [instructions_loop, start_exp_cards, test_blocks]
-            //timeline: [start_exp_cards, test_blocks]
+            //timeline: [instructions_loop, start_exp_cards, test_blocks]
+            timeline: [start_exp_cards, test_blocks]
 
 
         } //instructions+test takes 180sec 

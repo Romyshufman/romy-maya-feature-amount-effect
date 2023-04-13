@@ -8,6 +8,11 @@
         padding: 10px
     }
 
+    d {
+        left: 40px;
+        top: 40px;
+    }
+
     img.keyboard {
         height: 215px;
         width: 517px;

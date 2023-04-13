@@ -131,6 +131,7 @@
         var background='images/test_elements/background.png'
         var background_locs;
         var invalid=false;
+        var invalid_from_all_keyboard=false;
         var FB_matrix = [];
         FB_matrix[0] = [0.33772, 0.39326, 0.40412, 0.45749, 0.48324, 0.48626, 0.45786, 0.42262, 0.49357, 0.50731, 0.54289, 0.53135, 0.50034, 0.49953, 0.48937, 0.50251, 0.53868, 0.52203, 0.49471, 0.45876, 0.52796, 0.50268, 0.46898, 0.4837, 0.47281, 0.48038, 0.42808, 0.39279, 0.37639, 0.36649, 0.35582, 0.35915, 0.38079, 0.37371, 0.37682, 0.41413, 0.39547, 0.44378, 0.46997, 0.47091, 0.50357, 0.53194, 0.51394, 0.52503, 0.53825, 0.54097, 0.49772, 0.50029, 0.48817, 0.50105, 0.45351, 0.46345, 0.50613, 0.51335, 0.56239, 0.56169, 0.56903, 0.5471, 0.50874, 0.53747, 0.50208, 0.51419, 0.53481, 0.47552, 0.48684, 0.51724, 0.49535, 0.51149, 0.53235, 0.4978, 0.47696, 0.47291, 0.48077, 0.4425, 0.48969, 0.52356, 0.54573, 0.49781, 0.52555, 0.50405, 0.519, 0.51776, 0.49547, 0.48375, 0.45753, 0.5155, 0.51645, 0.50343, 0.47022, 0.47794, 0.51657, 0.52218, 0.52722, 0.5297, 0.52667, 0.56737, 0.6445, 0.63256, 0.59317, 0.5313];
         FB_matrix[1] = [0.25704, 0.25686, 0.26537, 0.32215, 0.2977, 0.31559, 0.29018, 0.24321, 0.24308, 0.27374, 0.28045, 0.31219, 0.3303, 0.30804, 0.37726, 0.40205, 0.37142, 0.34159, 0.31001, 0.30259, 0.25156, 0.28041, 0.29775, 0.33556, 0.33383, 0.27651, 0.31895, 0.3416, 0.31953, 0.27126, 0.28677, 0.27745, 0.23634, 0.18869, 0.1756, 0.16868, 0.16833, 0.16272, 0.16272, 0.16828, 0.23888, 0.215, 0.2362, 0.2198, 0.25504, 0.24835, 0.23921, 0.25358, 0.28813, 0.29193, 0.30125, 0.26231, 0.25296, 0.28666, 0.26313, 0.2301, 0.21956, 0.20996, 0.25839, 0.28052, 0.32197, 0.35135, 0.36251, 0.35102, 0.37592, 0.41482, 0.46239, 0.46043, 0.50986, 0.56564, 0.59565, 0.62044, 0.56731, 0.55831, 0.58139, 0.58884, 0.54916, 0.5071, 0.51807, 0.54408, 0.56728, 0.52195, 0.55915, 0.53774, 0.53981, 0.52355, 0.46647, 0.4676, 0.45075, 0.48408, 0.55282, 0.54373, 0.53274, 0.53184, 0.53568, 0.49976, 0.50574, 0.552, 0.51679, 0.53681];
@@ -211,7 +212,7 @@
                 { prompt: "What is the goal in the game?", name: 'game_goal', correct: "The goal is to learn which card is better", options: Q6_options, required: true },
                 { prompt: "If one card leads you to more money, it means the other cards will probably lead you to less money ", name: 'value_independence', correct: "False", options: Q7_options, required: true },
                 { prompt: "If you use the RIGHT and not the LEFT response keys, you might win more", name: 'location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning.", options: Q8_options, required: true },
-                { prompt: "when do you if tou got a coin from choosing a shape?", name: 'location_value', correct: "at the end of the block", options: Q9_options, required: true },
+                { prompt: "when do you if tou got a coin from choosing a shape?", name: 'reward_time', correct: "at the end of the block", options: Q9_options, required: true },
 
             ],
         };
@@ -326,31 +327,28 @@
                 else{
                     selected = 0
                     card_selected = test_deck_images[block_type].indexOf(left_card)
-                    //left_with_tag = "<img class='card_left' src='" + left_card + "'>"
                     left_to_show = reward_deck_images[block_type][card_selected]
                     left_with_tag = "<img class='card_left' src='" + left_to_show + "'>"
                 }
             }
-            else if (last_choice == 'd') {
+            else if (last_choice == 'f') {
                 if (background_locs[1]==true){
                     invalid=true
                 } 
                 else{
                     selected = 1
                     card_selected = test_deck_images[block_type].indexOf(mid_left_card)
-                    // mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_card + "'>"
                     mid_left_to_show = reward_deck_images[block_type][card_selected]
                     mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_to_show + "'>"
                 }
             }
-            else if (last_choice == 'j') {
+            else if (last_choice == 'h') {
                 if (background_locs[2]==true){
                     invalid=true
                 } 
                 else{
                     selected = 2
                     card_selected = test_deck_images[block_type].indexOf(mid_right_card)
-                    //mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_card + "'>"
                     mid_right_to_show = reward_deck_images[block_type][card_selected]
                     mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_to_show + "'>"
                 }
@@ -362,20 +360,27 @@
                 else{
                     selected = 3
                     card_selected = test_deck_images[block_type].indexOf(right_card)
-                    //right_with_tag = "<img class='card_right' src='" + right_card + "'>"
                     right_to_show = reward_deck_images[block_type][card_selected]
                     right_with_tag = "<img class='card_right' src='" + right_to_show + "'>"
                 }
             }
-            else {
+            else{
                 selected = null
                 reward = 0
-                return '<div style="font-size:40px;">Please respond faster!</div>'
+                if (last_choice!= null){
+                    invalid_from_all_keyboard=true;
+                    //return '<div style="font-size:40px;">Please choose only between "s", "f", "h", "k".</div>'
+                    return '<div style="font-size:40px; position: absolute; left: 220px; top: 300px;">Please choose only between "s", "f", "h", "k".</div>'
+
+                }
+                else {
+                    return '<div style="font-size:40px; position: absolute; left: 420px; top: 300px;">Please respond faster!</div>'
+                }
             }
             if (invalid==true) {
                 selected = null
                 reward = 0
-                return '<div style="font-size:40px;">Please choose a valid option!</div>'
+                return '<div style="font-size:40px; position: absolute; left: 380px; top: 300px;">Please choose a valid option!</div>'
             }
             return left_with_tag + mid_left_with_tag + mid_right_with_tag + right_with_tag;
 
@@ -390,31 +395,31 @@
             card_selected = jsPsych.data.getLastTrialData().values()[0].card_selected
 
             if (key_selected == 0) {
-                //left_with_tag = "<img class='card_left' src='" + left_card + "'>"
                 left_card = reward_deck_images[block_type][card_selected]
                 left_with_tag = "<img class='card_left' src='" + left_card + "'>"
             }
             else if (key_selected == 1) {
-                //mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_card + "'>"
                 mid_left_card = reward_deck_images[block_type][card_selected]
                 mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_card + "'>"
             }
             else if (key_selected == 2) {
-                //mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_card + "'>"
                 mid_right_card = reward_deck_images[block_type][card_selected]
                 mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_card + "'>"
             }
             else if (key_selected == 3) {
-                //right_with_tag = "<img class='card_right' src='" + right_card + "'>"
                 right_card = reward_deck_images[block_type][card_selected]
                 right_with_tag = "<img class='card_right' src='" + right_card + "'>"
             }
             else if (invalid==true) {
                 invalid=false
-                return '<div style="font-size:40px;">Please choose a valid option!</div>'  + '<p><b>Press SPACE to continue</b></p>'
+                return '<div style="font-size:40px; position: absolute; left: 380px; top: 300px;">Please choose a valid option!</div>'  + '<p><b>Press SPACE to continue</b></p>'
+            }
+            else if( invalid_from_all_keyboard==true) {
+                invalid_from_all_keyboard=false
+                return '<div style="font-size:40px; position: absolute; left: 220px; top: 300px;">Please choose only between "s", "f", "h", "k".</div>'+ '<p><b>Press SPACE to continue</b></p>'
             }
             else {
-                return '<div style="font-size:40px;">Please respond faster!</div>'  + '<p><b>Press SPACE to continue</b></p>'
+                return '<div style="font-size:40px; position: absolute; left: 420px; top: 300px;">Please respond faster!</div>'  + '<p><b>Press SPACE to continue</b></p>'
             }
             prob_reward = FB_matrix[selected][current_cards_exp_trial];
             prob_unreward = 1 - prob_reward;
@@ -498,7 +503,7 @@
                 block_type=practice_order[practice_number];
                 return draw_show_cards(practice_deck_images[block_type])
             },
-            choices: ['s', 'd', 'j', 'k'],
+            choices: jsPsych.ALL_KEYS,
             trial_duration: 6000,
             data: { phase: 'practice', trial_name: 'cards1', trial_num: function () { return current_cards_practice_trial } },
 
@@ -577,7 +582,7 @@
                 //trial_type=trial_order[current_cards_exp_trial]
                 return draw_show_cards(images_for_block_start())
             },
-            choices: ['s','d','j','k'],
+            choices: jsPsych.ALL_KEYS,
             trial_duration: 6000,
             data: { phase: 'exp', trial_name: 'cards1', trial_num: function () { return current_cards_exp_trial } },
         }
@@ -587,6 +592,7 @@
             stimulus: show_choice,
             choices: jsPsych.NO_KEYS,
             trial_duration: 500,
+            //trial_duration: 3000,
             data: { phase: 'exp', trial_name: 'choice1', trial_num: function () { return current_cards_exp_trial } },
             on_finish: function (data) {
                 data.key_selected = selected
@@ -695,7 +701,7 @@
               ------------------------------------------------------*/
         jsPsych.init({
             timeline: timeline,
-            preload_images: practice_deck_images, test_deck_images, reward_images,
+            preload_images: example_deck0,example_deck1,example_deck2,test_deck0,test_deck1,test_deck2,reward_images,reward_deck0,reward_deck1,reward_deck2,
             show_preload_progress_bar: true,
             on_finish: function () {
                 // This all part is not used in this experiment (showing participants their bonus and capacity)

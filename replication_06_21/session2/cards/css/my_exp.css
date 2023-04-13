@@ -8,11 +8,6 @@
         padding: 10px
     }
 
-    d {
-        left: 40px;
-        top: 40px;
-    }
-
     img.keyboard {
         height: 215px;
         width: 517px;
@@ -66,26 +61,15 @@
        --lower3: 0px;
 
         --left_card: 0px;
+        --middle_left_card: 0px;
+        --middle_right_card: 0px;
         --right_card: 0px;
         --top_card: 0px;
 
         --top_reward: 0px;
         --left_reward: 0px;
-
-
-        --left_horizontal: 0px;
-        --top_vertical: 0px;
     }
 
-
-
-    .fixation {
-        /* plus fixation will be in the middle of the screen*/
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 15.8px;
-    }
 
     .reward {
 

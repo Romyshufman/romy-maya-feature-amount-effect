@@ -132,6 +132,9 @@
         var background_locs;
         var invalid=false;
         var invalid_from_all_keyboard=false;
+        var first_loc;
+        var second_loc;
+        var prob_reward;
 
         var FB_matrix1 = []; //first option for random walk
         FB_matrix1[0] = [0.157020842, 0.15, 0.15, 0.156040006, 0.15, 0.15, 0.15, 0.15, 0.15, 0.195488406, 0.238761738, 0.208685625, 0.176161325, 0.189415947, 0.179116023, 0.1990778, 0.15, 0.154505329, 0.20971304, 0.248624145, 0.243429274, 0.222942467, 0.25854102, 0.32771788, 0.346910101, 0.363247772, 0.412600622, 0.394723848, 0.379588708, 0.39092306, 0.37934023, 0.422537053, 0.42854826, 0.414645187, 0.411459023, 0.357681821, 0.319182052, 0.271389827, 0.331717046, 0.337330719, 0.360532922, 0.40079545, 0.4120548, 0.419174746, 0.49439884, 0.445138221, 0.462633019, 0.472754153, 0.446989894, 0.450821354]
@@ -309,12 +312,28 @@
                     card2=deck[7]
                 }
             }
+
             arr= jsPsych.randomization.shuffle([card1,card2,background, background])
             left_card=arr[0];
             mid_left_card=arr[1];
             mid_right_card=arr[2];
             right_card=arr[3];
             background_locs=find_background_loc(arr)
+
+            if (practice_number == -1){ //if we are not in practice
+                for (var i = 0; i < 4; i++){
+                    if (background_locs[i] == 0){
+                        if (arr[i] == card1){
+                            first_loc = i
+                        }
+                        else {
+                            second_loc = i
+                        }
+                    }
+                }
+            }
+
+
             left_with_tag = "<img class='card_left' src='" + left_card + "'>"
             mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_card + "'>"
             mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_card + "'>"
@@ -404,7 +423,7 @@
                 reward = 0
                 if (last_choice!= null){
                     invalid_from_all_keyboard=true;
-                    return '<div style="font-size:40px; position: absolute; left: 220px; top: 300px;">Please choose only between "s", "f", "h" and "k"!</div>'
+                    return '<div style="font-size:40px; position: absolute; left: 220px; top: 300px;">Please choose only between "S", "F", "H" and "K"!</div>'
                 }
                 else {
                     return '<div style="font-size:40px; position: absolute; left: 420px; top: 300px;">Please respond faster!</div>'
@@ -469,7 +488,7 @@
             }
             else if( invalid_from_all_keyboard==true) {
                 invalid_from_all_keyboard=false
-                return '<div style="font-size:40px; position: absolute; left: 220px; top: 300px;">Please choose only between "s", "f", "h" and "k"!</div>'+ '<p><b>Press SPACE to continue</b></p>'
+                return '<div style="font-size:40px; position: absolute; left: 220px; top: 300px;">Please choose only between "S", "F", "H" and "K"!</div>'+ '<p><b>Press SPACE to continue</b></p>'
             }
             else {
                 return '<div style="font-size:40px; position: absolute; left: 420px; top: 300px;">Please respond faster!</div>'  + '<p><b>Press SPACE to continue</b></p>'
@@ -632,7 +651,12 @@
             },
             choices: jsPsych.ALL_KEYS,
             trial_duration: 6000,
-            data: { phase: 'exp', trial_name: 'cards1', trial_num: function () { return current_cards_exp_trial } },
+            data: { phase: 'exp', trial_name: 'cards1', trial_num: function () { return current_cards_exp_trial },
+                block_type: function () { return block_type} },
+            on_finish: function (data) {
+                data.first_loc = first_loc
+                data.second_loc = second_loc
+            }
         }
 
         var exp_choice1 = {
@@ -641,9 +665,12 @@
             choices: jsPsych.NO_KEYS,
             trial_duration: 500,
             //trial_duration: 3000,
-            data: { phase: 'exp', trial_name: 'choice1', trial_num: function () { return current_cards_exp_trial } },
+            data: { phase: 'exp', trial_name: 'choice1', trial_num: function () { return current_cards_exp_trial },
+                block_type: function () { return block_type} },
             on_finish: function (data) {
                 data.key_selected = selected
+                data.first_loc = first_loc
+                data.second_loc = second_loc
                 if (selected == 0) {
                     data.card_selected = images_for_block_start().indexOf(left_card)
                 }
@@ -665,13 +692,17 @@
             },
             choices: [32],
             data: {
-                phase: 'exp', trial_name: 'reward1', trial_num: function () { return current_cards_exp_trial }, block: function () { return block }
+                phase: 'exp', trial_name: 'reward1', trial_num: function () { return current_cards_exp_trial },
+                block: function () { return block }, block_type: function () { return block_type}
             },
 
             on_finish: function (data) {
                 current_cards_exp_trial+=1;
                 data.reward = reward;
+                data.prob_reward = prob_reward
                 data.key_selected = selected
+                data.first_loc = first_loc
+                data.second_loc = second_loc
                 if (selected == 0) {
                     data.card_selected = images_for_block_start().indexOf(left_card)
                 }
@@ -729,7 +760,7 @@
 
         var test_procedure = {
             timeline: [fixation_cards, exp_cards1, exp_choice1, exp_reward1],
-            repetitions: 5 // 10sec per trial - 50 trials per block.
+            repetitions: 1 // 10sec per trial - 50 trials per block.
         }
         var test_blocks = {
             timeline: [start_block, test_procedure, finish_block],
@@ -737,8 +768,8 @@
         };
 
         var full_procedure = {
-            timeline: [instructions_loop, start_exp, test_blocks]
-            //timeline: [start_exp, test_blocks]
+            //timeline: [instructions_loop, start_exp, test_blocks]
+            timeline: [start_exp, test_blocks]
 
 
         } //instructions+test takes 180sec 

@@ -91,7 +91,7 @@
         var example_reward0=['images/practice_reward/conversation_green_blank.png', 'images/practice_reward/conversation_ocean_blank.png']
         var example_reward1= ['images/practice_reward/heart_bluish_blank.png','images/practice_reward/star_purple_blank.png', 'images/practice_reward/heart_purple_blank.png','images/practice_reward/star_bluish_blank.png']
         var example_reward2= ['images/practice_reward/parallel_brown_plus.png', 'images/practice_reward/trapezoid_fuchsia_x.png', 'images/practice_reward/parallel_fuchsia_plus.png', 'images/practice_reward/trapezoid_brown_x.png', 'images/practice_reward/trapezoid_brown_plus.png', 'images/practice_reward/parallel_fuchsia_x.png', 'images/practice_reward/trapezoid_fuchsia_plus.png', 'images/practice_reward/parallel_brown_x.png']
-        var practice_reward_images = [example_deck0,example_deck1,example_deck2]
+        var practice_reward_images = [example_reward0,example_reward1,example_reward2]
 
         //2D array - array i contains the cards for block type i
         var test_deck0=['images/test_elements/pink_blank_triangle.png', 'images/test_elements/green_blank_triangle.png']
@@ -178,9 +178,8 @@
                 + "<p style='text-align:left'>Your winnings in this game will earn you additional payment bonus for the study."
                 + " If no extra money will be earned in the card game, you will still get £2.5 for completing this session of the study."
                 + " However, <b>you can gain up to an extra £0.9 based on winnings in the game.</b></p>",
-            "<p style='text-align:left'> We will now provide instructions regarding the card game. Please read them carefully. <br>"
-            + "Feel free to go back and forth between the screens.</p> "
-            + "<p style='text-align:left'>At the end of the instructions, <b>we will ask you to complete a short quiz about them</b>, to make sure everything is well understood.</p>",
+            "<p style='text-align:left'> We will now provide a short reminder of the instructions regarding the card game. Please read them carefully. <br>"
+            + "Feel free to go back and forth between the screens.</p> ",
             "<p style='text-align:left'> Below is an example of a card-deck of four cards, very much like the cards in the game to follow. <b>The card-decks in the game, though, will vary in size - 2-card, 4-card or 8-card decks.</b> </p>" +
             "<img class='exampleDeck' src='images/practice_elements/heart_bluish_blank.png' >"+"<img class='exampleDeck' src='images/practice_elements/star_purple_blank.png' >"+
             "<img class='exampleDeck' src='images/practice_elements/heart_purple_blank.png' >"+"<img class='exampleDeck' src='images/practice_elements/star_bluish_blank.png' >",
@@ -198,70 +197,6 @@
             + " 3. <b>The chance that each location will give you money has nothing to do with the other locations - </b> you can't learn about one location from the money rewards you got for another.</p>"],
             show_clickable_nav: true
         };
-
-        var start_instructions_test = {
-            on_start: function () {
-                if (document.querySelector('#cursor-toggle') != null)
-                    document.querySelector('#cursor-toggle').remove()
-            },
-            type: 'html-keyboard-response',
-            stimulus: "<p> <br><br> You will now move on to a quick quiz to make sure you understood the instructions. If you make a mistake, you will need to go through the instructions again. <br><br> <b> Press any key to continue</b></p>"
-        }
-        var Q1_options = ["2", "4", "8", "Could be either one, depending on the block."]
-        var Q2_3_options = ["2", "4", "6"];
-        var Q4_options = ["Click on it.", "Press the LEFT or RIGHT arrow keys.", "Press the 'S', 'F', 'H' or 'K' keys."];
-        var Q5_6_options = ["True", "False"];
-        var Q7_options = ["The goal is to learn which card is better", "The goal is to learn which location is better"]
-        var Q8_options = ["True", "False"];
-        var Q9_options = ["True - the cards are related to the winning chances.", "False - you won't win more or less by choosing one card over the other. Only the locations are related to your chance of winning."];
-
-
-        var instructions_test = {
-            type: 'survey-multi-choice',
-            questions: [
-                { prompt: "What is the size of a card deck?", name: 'deck_size', correct: "Could be either one, depending on the block.", options: Q1_options, required: true },
-                { prompt: "How many cards are presented on each step?", name: 'cards_step', correct: "2", options: Q2_3_options, required: true },
-                { prompt: "How many possible locations are there?", name: 'locations_amount', correct: "4", options: Q2_3_options, required: true },
-                { prompt: "How do you choose a card?", name: 'choose_card', correct: "Press the 'S', 'F', 'H' or 'K' keys.", options: Q4_options, required: true },
-                { prompt: "Some locations are better than others.", name: 'better_locations', correct: "True", options: Q5_6_options, required: true },
-                { prompt: "How 'good' or 'bad' a location is will change along the game.", name: 'value_change', correct: "True", options: Q5_6_options, required: true },
-                { prompt: "What is the goal in the game?", name: 'game_goal', correct: "The goal is to learn which location is better", options: Q7_options, required: true },
-                { prompt: "If one location leads you to a large sum of money, it means the other location will probably lead you to a small sum of money.", name: 'value_independence', correct: 'False', options: Q8_options, required: true },
-                { prompt: "If you select a location based on the card presented there, you might win more", name: 'location_value', correct: "False - you won't win more or less by choosing one card over the other. Only the locations are related to your chance of winning.", options: Q9_options, required: true },
-            ],
-        };
-
-        var if_trial = {
-            type: 'html-button-response',
-            stimulus: "<p>Sorry. You made a mistake.<br>"
-                + "Let's go back to the instructions. "
-                + "Please read them carefully before submitting your answers. <br>"
-                + "Thank you!",
-            choices: ['Back to instructions']
-        }
-        var to_repeat;
-        var check_answers = {
-            timeline: [if_trial],
-            conditional_function: function () {
-                // get the data from the previous trial,
-                // and check which key was pressed
-                to_repeat = false;
-                var responses_to_test = JSON.parse(jsPsych.data.get().filter({ trial_type: 'survey-multi-choice' }).last(1).select('responses').values[0])
-                for (i = 0; i < instructions_test.questions.length; i++) {
-                    current_name = instructions_test.questions[i].name;
-                    current_correct = instructions_test.questions[i].correct
-                    if (current_correct != responses_to_test[current_name]) {
-                        to_repeat = true;
-                        return to_repeat
-                    }
-                    else {
-                        to_repeat = false;
-
-                    }
-                }
-                return to_repeat
-            }
-        }
         /*---------------------------------------------------- 
         Functions for card game
         ------------------------------------------------------*/
@@ -748,14 +683,7 @@
         }
 
         var instructions_loop = {
-            timeline: [instructions_cards, start_practice, demo_procedure],
-            loop_function: function () {
-                if (to_repeat == true) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+            timeline: [instructions_cards, start_practice, demo_procedure]
         }
 
         var test_procedure = {

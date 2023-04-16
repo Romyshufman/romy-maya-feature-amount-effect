@@ -76,7 +76,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        height: 100px;
+        height: 110px;
         width: 100px;
     }
 
@@ -93,6 +93,30 @@
     .block_example {
         height: 130px;
         width: 130px;
+    }
+
+    .exampleDeck {
+        height: 130px;
+        width: 130px;
+        margin-right: 5px;
+    }
+
+    .exampleLoc1 {
+        height: 223px;
+        width: 960px;
+        margin-bottom: -60px;
+        margin-top: -30px;
+    }
+
+    .exampleLoc2 {
+        height: 223px;
+        width: 960px;
+        margin-bottom: -20px;
+    }
+
+    .exampleReward {
+        height: 224px;
+        width: 566px;
     }
 
     img.card_left {

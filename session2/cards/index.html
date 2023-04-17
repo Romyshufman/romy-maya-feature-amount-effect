@@ -679,7 +679,7 @@
         ------------------------------------------------------*/
         var demo_procedure = {
             timeline: [fixation_cards, practice_cards1, practice_choice1, practice_reward1],
-            repetitions: 6  //every trial takes 500+200+2*(900+1500+500+750)+1500+500 =10 sec per trial, 6 trials = 60 sec
+            repetitions: 6  //8.15 sec per trial on avg , 6 trials = 49 sec
         }
 
         var instructions_loop = {
@@ -688,7 +688,7 @@
 
         var test_procedure = {
             timeline: [fixation_cards, exp_cards1, exp_choice1, exp_reward1],
-            repetitions: 1 // 10sec per trial - 50 trials per block.
+            repetitions: 1 //8.15 sec per trial on avg - 50 trials per block. 6.8 minutes on avg per block
         }
         var test_blocks = {
             timeline: [start_block, test_procedure, finish_block],
@@ -700,7 +700,7 @@
             //timeline: [start_exp, test_blocks]
 
 
-        } //instructions+test takes 180sec 
+        }
         timeline.push(full_procedure)
 
         /*---------------------------------------------------- 
@@ -712,16 +712,10 @@
             show_preload_progress_bar: true,
             on_finish: function () {
                 // This all part is not used in this experiment (showing participants their bonus and capacity)
-                /*calculate accuracy in squares part of cards game */
-                var correct_test_squares = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'test_cards' }).select('is_correct').sum()
-                var total_test_squares = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'test_cards' }).select('is_correct').count()
-                var test_squares_cards_accuracy = correct_test_squares / total_test_squares;
-                var test_squares_cards_accuracy = test_squares_cards_accuracy.toFixed(2)
-                localStorage.accuracy = test_squares_cards_accuracy; //accuracy to show
                 /*calculate bonus */
                 var number_of_reward1 = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'reward1' }).select('reward').sum()
                 var number_of_reward2 = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'reward2' }).select('reward').sum()
-                var bonus = 0.003 * (number_of_reward1 + number_of_reward2)
+                var bonus = 0.007 * (number_of_reward1 + number_of_reward2)
                 var bonus_string = bonus.toFixed(2)
                 localStorage.bonus = bonus_string; //bonus to show
                 /*get data */

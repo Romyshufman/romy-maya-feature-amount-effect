@@ -128,8 +128,7 @@
         Define game-related settings
         ------------------------------------------------------*/
         var block_type=Number(jsPsych.randomization.sampleWithoutReplacement([0,1,2], 1));
-        // var practice_order=jsPsych.randomization.shuffle([0,0,1,1,2,2])
-        var practice_order=jsPsych.randomization.shuffle([1,1,1,1,1,1])
+        var practice_order=jsPsych.randomization.shuffle([0,0,1,1,2,2])
         var practice_number=-1;
         var background_locs;
         var invalid=false;
@@ -242,8 +241,11 @@
                 + "Let's go back to the instructions. "
                 + "Please read them carefully before submitting your answers. <br>"
                 + "Thank you!",
-            choices: ['Back to instructions']
-        }
+            choices: ['Back to instructions'],
+            on_finish: function () {
+                practice_number = -1;
+                }
+            }
         var to_repeat;
         var check_answers = {
             timeline: [if_trial],
@@ -631,6 +633,7 @@
             type: 'html-keyboard-response',
             stimulus: function () {
                 block_type=(block_type+1)%3;
+                FB_matrix= jsPsych.randomization.shuffle(FB_matrix);
                 start_block_str= '<p><b><u>Test block ' + (block + 1) + ' out of ' + (blocks) + '</u></b></p>' + '<p style="text-align: center"> You will now start a test block. Below are the cards that can appear in this round.</p>'
                     + '<p style="text-align: center">Use the response key that matches the location of the card you select ("S", "F", "H" or "K", in correspondence) to make your selection. <br> Please do your best to win as many coins as possible!<br> </p>'
                     + '<p style="text-align: center">Remember that: <br> 1) How "good" each location is can change along the round <br> 2) Only the location of the card (not the card that appeared there) predicts an outcome <br> 3) The chance that each location will give you money has nothing to do with the other locations </p>'
@@ -705,14 +708,21 @@
             },
 
             on_finish: function (data) {
-                current_cards_exp_trial+=1;
                 data.reward = reward;
                 data.prob_reward = prob_reward
                 data.key_selected = selected
                 data.first_loc = first_loc
                 data.second_loc = second_loc
+                if (selected==first_loc){//first_loc was selected
+                    data.prob_unreward = FB_matrix[second_loc][current_cards_exp_trial];
+                }
+                else{
+                    data.prob_unreward = FB_matrix[first_loc][current_cards_exp_trial];
+                }
+                current_cards_exp_trial+=1;
                 if (selected == 0) {
                     data.card_selected = images_for_block_start().indexOf(left_card)
+
                 }
                 else if (selected == 1) {
                     data.card_selected = images_for_block_start().indexOf(mid_left_card)
@@ -762,7 +772,7 @@
         ------------------------------------------------------*/
         var demo_procedure = {
             timeline: [fixation_cards, practice_cards1, practice_choice1, practice_reward1],
-            repetitions: 6  //8.15 sec per trial on avg , 6 trials = 49 sec
+            repetitions: 1  //8.15 sec per trial on avg , 6 trials = 49 sec
         }
 
         var instructions_loop = {
@@ -782,12 +792,12 @@
         }
         var test_blocks = {
             timeline: [start_block, test_procedure, finish_block],
-            repetitions: 3
+            repetitions: 2
         };
 
         var full_procedure = {
-            timeline: [instructions_loop, start_exp, test_blocks, finish_learning]
-            //timeline: [start_exp, test_blocks, finish_learning]
+            //timeline: [instructions_loop, start_exp, test_blocks, finish_learning]
+            timeline: [start_exp, test_blocks, finish_learning]
         }
         timeline.push(full_procedure)
 

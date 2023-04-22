@@ -77,7 +77,8 @@
         /*full screen */
         var enter_fullscreen = {
             type: "fullscreen",
-            fullscreen_mode: true
+            fullscreen_mode: true,
+            message: '<p>This experiment will be in fullscreen mode. <br> <b>Please make sure your browser is on 100% zoom.</b></p>'
         }
         /*---------------------------------------------------- 
         Define images
@@ -135,6 +136,7 @@
         var first_loc;
         var second_loc;
         var prob_reward;
+        var sum_of_reward = 0;
 
         var FB_matrix1 = []; //first option for random walk
         FB_matrix1[0] = [0.157020842, 0.15, 0.15, 0.156040006, 0.15, 0.15, 0.15, 0.15, 0.15, 0.195488406, 0.238761738, 0.208685625, 0.176161325, 0.189415947, 0.179116023, 0.1990778, 0.15, 0.154505329, 0.20971304, 0.248624145, 0.243429274, 0.222942467, 0.25854102, 0.32771788, 0.346910101, 0.363247772, 0.412600622, 0.394723848, 0.379588708, 0.39092306, 0.37934023, 0.422537053, 0.42854826, 0.414645187, 0.411459023, 0.357681821, 0.319182052, 0.271389827, 0.331717046, 0.337330719, 0.360532922, 0.40079545, 0.4120548, 0.419174746, 0.49439884, 0.445138221, 0.462633019, 0.472754153, 0.446989894, 0.450821354]
@@ -175,26 +177,28 @@
             },
             type: "instructions",
             pages: ["<p><b><u>Welcome back to the card game</u></b></p>"
-                + "<p style='text-align:left'>Your winnings in this game will earn you additional payment bonus for the study."
+                + "<p style='text-align:center'>Your winnings in this game will earn you additional payment bonus for the study."
                 + " If no extra money will be earned in the card game, you will still get £2.5 for completing this session of the study."
                 + " However, <b>you can gain up to an extra £0.9 based on winnings in the game.</b></p>",
-            "<p style='text-align:left'> We will now provide a reminder of the instructions regarding the card game. Please read them carefully. <br>"
-            + "Feel free to go back and forth between the screens.</p> ",
-            "<p style='text-align:left'> Below is an example of a card-deck of four cards, very much like the cards in the game to follow. <b>The card-decks in the game, though, will vary in size - 2-card, 4-card or 8-card decks.</b> </p>" +
-            "<img class='exampleDeck' src='images/practice_elements/heart_bluish_blank.png' >"+"<img class='exampleDeck' src='images/practice_elements/star_purple_blank.png' >"+
-            "<img class='exampleDeck' src='images/practice_elements/heart_purple_blank.png' >"+"<img class='exampleDeck' src='images/practice_elements/star_bluish_blank.png' >",
-            "<p> On each step, only two cards from the card deck will be offered, in only two of the four possible locations (as shown in the examples below).<br>"
-            + "You will be able to select the <b>left card by pressing 'S'</b>, the <b>middle-left card by pressing 'F'</b>, the <b>middle-right card by pressing 'H'</b> and the <b>right card by pressing 'K'</b> on your keyboard."
-            + " <br><br><u>Please do your best to respond as fast and as accurate as you can.</u><br></p>"
-            + "<img class='exampleLoc1' src='images/example1.png' > <br>" + "<img class='exampleLoc2' src='images/example2.png' >",
-            "<p style='text-align:left'>After selecting the card, you will see an outcome in the middle of the screen, as shown below.<br><br>"
-            + "<b>Winning very much depends on the location of the card you chose - some locations are better than others in the block.</b><br>"
-            + "Your task is to find out which location is the best in each block at any time and choose it.<br><br> <b> Please note that the winning chances of the locations are independent</b>.<br> Learning about one location does not tell you anything about the other locations.</p>"
-            + "<br> <img class='exampleReward' src='images/example_reward.png'>",
-            "<p style='text-align:left'><u>Three important things to remember:</u><br>"
-            + "1. <b>How good a location is can change along with the game - </b> somewhat like the value of market products that sometimes is worth more and sometimes less."
-            + "<br><br>2.<b> Only the locations are related to your chances of winning - </b> the identity of the card does not influence the chances of winning a coin.<br><br>"
-            + " 3. <b>The chance that each location will give you money has nothing to do with the other locations - </b> you can't learn about one location from the money rewards you got for another.</p>"],
+                "<p style='text-align:center'> We will now provide a refresher of the instructions for the card game. <br>"
+                + "Feel free to go back and forth between the screens.</p> ",
+                "<p style='text-align:center'> Below is an example of a card-deck of four cards, very much like the cards in the game to follow. <b>The card-decks in the game, though, will vary in size - 2-card, 4-card or 8-card decks.</b> </p>" +
+                "<img class='exampleDeck' src='images/practice_elements/heart_bluish_blank.png' >"+"<img class='exampleDeck' src='images/practice_elements/star_purple_blank.png' >"+
+                "<img class='exampleDeck' src='images/practice_elements/heart_purple_blank.png' >"+"<img class='exampleDeck' src='images/practice_elements/star_bluish_blank.png' >",
+                "<p> On each step, only two cards from the card deck will be offered, in only two of the four possible locations.<br><br>"
+                + "The keys you will need to use in order to make a selection are <b>S, F, H and K</b>, as specified in the examples following.</p>",
+                "<p>Here, for example, you will be able to select the <b>left card by pressing 'S'</b> and the <b>right card by pressing 'K'</b> on your keyboard.</p>"
+                + "<img class='exampleLoc' src='images/example1.png' >",
+                "<p>Here, however, you will be able to select the <b>middle-left card by pressing 'F'</b> and the <b>middle-right card by pressing 'H'</b> on your keyboard.</p>"
+                + "<img class='exampleLoc' src='images/example2.png' >",
+                "<p style='text-align:left'>After selecting the card, you will see an outcome in the middle of the screen, as shown below.</p>"
+                + "<img class='exampleReward' src='images/example_reward.png'><br><br>",
+                "<p><b>Winning very much depends on the location of the card you chose - some locations are better than others in the current part.</b><br>"
+                + "Your task is to find out which location is the best in each part at any time and choose it.<br><br> <b> Please note that the winning chances of one location are unrelated to the winning chances of another.</b><br> Learning about one location does not tell you anything about the other locations.</p>",
+                "<p style='text-align:center'><u>Three important things to remember:</u><br>"
+                + "1. <b>How good a location is can change along with the game - </b> somewhat like the value of market products that sometimes is worth more and sometimes less."
+                + "<br><br>2.<b> Only the locations are related to your chances of winning - </b> the identity of the card does not influence the chances of winning a coin.<br><br>"
+                + " 3. <b>The chance that each location will give you money has nothing to do with the other locations - </b> you can't learn about one location from the money rewards you got for another.</p>"],
             show_clickable_nav: true
         };
         /*---------------------------------------------------- 
@@ -431,6 +435,9 @@
             prob_reward = FB_matrix[selected][current_cards_exp_trial];
             prob_unreward = 1 - prob_reward;
             reward = jsPsych.randomization.sampleWithReplacement([0, 1], 1, [prob_unreward, prob_reward])[0];
+            if (practice_number == -1){ //count reward only if we're in test blocks
+                sum_of_reward += reward;
+            }
             reward_to_show = "<img class=reward src='" + reward_images[reward] + "'>"
             return left_with_tag + mid_left_with_tag + mid_right_with_tag + right_with_tag  + reward_to_show  + '<br><br><br><br><br><br><br><br><p><b>Press SPACE to continue</b></p>'
         }
@@ -472,7 +479,7 @@
         timeline.push(enter_fullscreen)
         var start_practice= {
             type: 'html-keyboard-response',
-            stimulus: '<div>We will now do a few practice trials <br> Please be ready with your fingers on <b>"S"</b>, <b>"F"</b>, <b>"H"</b> and <b>"K"</b>. <br><br> <b> Press any key to begin</b></div>',
+            stimulus: '<div> We will now do a few practice trials. <br> Please be ready with your fingers on <b>"S"</b>, <b>"F"</b>, <b>"H"</b> and <b>"K"</b>. <br><br> <b> Press any key to begin</b></div>',
             post_trial_gap: 1000,
             on_finish: function () { 
                 document.querySelector('head').insertAdjacentHTML('beforeend', '<style id="cursor-toggle"> html { cursor: none; } </style>') 
@@ -550,7 +557,7 @@
 
         var start_exp = {
             type: 'html-keyboard-response',
-            stimulus: '<div> Good job! Practice completed. <br> <br> We will now move on to the real game. Do your best to figure out which locations are better. Good luck!<br><br> <b>Press any key to continue.</b></div>',
+            stimulus: '<div> Good job! Practice completed. <br> <br> We will now move on to the real game. Please do your best to respond as fast as you can while trying to earn as many coins as you can. <br> Good luck!<br><br> <b>Press any key to continue.</b></div>',
             post_trial_gap: 1000,
         }
 
@@ -558,9 +565,9 @@
             type: 'html-keyboard-response',
             stimulus: function () {
                 block_type=(block_type+1)%3;
-                start_block_str= '<p><b><u>Test block ' + (block + 1) + ' out of ' + (blocks) + '</u></b></p>' + '<p style="text-align: left"> You will now start a test block. Below are the cards that can appear in this round.</p>'
-                    + '<p style="text-align: left">Use the response key that matches the location of the card you select ("S", "F", "H" or "K", in correspondence) to make your selection. <br> Please do your best to win as many coins as possible!<br> </p>'
-                    + '<p style="text-align: left">Remember that: <br> 1) How "good" each location is can change along the round <br> 2) Only the location of the card (not the card that appeared there) predicts an outcome <br> 3) The chance that each location will give you money has nothing to do with the other locations </p>'
+                start_block_str= '<p><b><u>Test block ' + (block + 1) + ' out of ' + (blocks) + '</u></b></p>' + '<p style="text-align: center"> You will now start a test block. Below are the cards that can appear in this round.</p>'
+                    + '<p style="text-align: center">Use the response key that matches the location of the card you select ("S", "F", "H" or "K", in correspondence) to make your selection. <br> Please do your best to win as many coins as possible!<br> </p>'
+                    + '<p style="text-align: center">Remember that: <br> 1) How "good" each location is can change along the round <br> 2) Only the location of the card (not the card that appeared there) predicts an outcome <br> 3) The chance that each location will give you money has nothing to do with the other locations </p>'
                     + '<p><b>Press SPACE to start</b></p>'
                 if (block_type==0){
                     start_block_str+='<img src="' + images_for_block_start()[0] + '" class="block_example">  ' + '<img src="' + images_for_block_start()[1] + '" class="block_example">    '
@@ -657,12 +664,9 @@
             type: 'html-keyboard-response',
             stimulus: function () {
     
-                finish_block_string = '<p>Good job!</p>' + '<p style="text-align: left"><br> Test block ' + (block + 1) + ' out of ' + (blocks) + ' is over.'
+                finish_block_string = '<p>Good job!</p>' + '<p style="text-align: center"><br> Test block ' + (block + 1) + ' out of ' + (blocks) + ' is over.'
                 if (block != 2) {
                     finish_block_string += ' You can stretch a little and take a short break while sitting in front of the screen, if needed.</p><p> <br><br><br><b>Press SPACE to continue</b>  </p>'
-                }
-                else {
-                    finish_block_string += 'Thank you for your participation!</p><p> <br><br><br><b>Press SPACE to exit</b>  </p>'
                 }
                 return finish_block_string
             },
@@ -672,6 +676,17 @@
                 block += 1;
                 current_cards_exp_trial = 0;
             }
+        }
+
+        var finish_learning = {
+            type: 'html-button-response',
+            stimulus: function () {
+                bonus = sum_of_reward * 0.007
+                return "<p><b>Congratulations!</b> <br><br> You successfully finished both parts of the task. <br>"
+                    + "You've earned an extra " + bonus + "£!</p>"
+            },
+            choices:["Click here to return to Prolific and complete the study"]
+            , button_html: ['<a href=https://app.prolific.co/submissions/complete?cc=XXXXXXX target="_blank"> %choice%</a>']
         }
 
         /*---------------------------------------------------- 
@@ -688,7 +703,7 @@
 
         var test_procedure = {
             timeline: [fixation_cards, exp_cards1, exp_choice1, exp_reward1],
-            repetitions: 1 //8.15 sec per trial on avg - 50 trials per block. 6.8 minutes on avg per block
+            repetitions: 6 //8.15 sec per trial on avg - 50 trials per block. 6.8 minutes on avg per block
         }
         var test_blocks = {
             timeline: [start_block, test_procedure, finish_block],
@@ -696,7 +711,7 @@
         };
 
         var full_procedure = {
-            timeline: [instructions_loop, start_exp, test_blocks]
+            timeline: [instructions_loop, start_exp, test_blocks, finish_learning]
             //timeline: [start_exp, test_blocks]
 
 

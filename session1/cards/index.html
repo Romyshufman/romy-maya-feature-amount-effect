@@ -714,10 +714,10 @@
                 data.first_loc = first_loc
                 data.second_loc = second_loc
                 if (selected==first_loc){//first_loc was selected
-                    data.prob_unreward = FB_matrix[second_loc][current_cards_exp_trial];
+                    data.prob_not_selected = FB_matrix[second_loc][current_cards_exp_trial];
                 }
                 else{
-                    data.prob_unreward = FB_matrix[first_loc][current_cards_exp_trial];
+                    data.prob_not_selected = FB_matrix[first_loc][current_cards_exp_trial];
                 }
                 current_cards_exp_trial+=1;
                 if (selected == 0) {

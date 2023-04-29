@@ -178,7 +178,7 @@
             type: "instructions",
             pages: ["<p><b><u>Welcome back to the card game</u></b></p>"
                 + "<p style='text-align:center'>Your winnings in this game will earn you additional payment bonus for the study."
-                + " If no extra money will be earned in the card game, you will still get £2.5 for completing this session of the study."
+                + " If no extra money will be earned in the card game, you will still get £2.5 for completing this part of the study."
                 + " However, <b>you can gain up to an extra £0.9 based on winnings in the game.</b></p>",
                 "<p style='text-align:center'> We will now provide a refresher of the instructions for the card game. <br>"
                 + "Feel free to go back and forth between the screens.</p> ",
@@ -193,8 +193,8 @@
                 + "<img class='exampleLoc' src='images/example2.png' >",
                 "<p style='text-align:left'>After selecting the card, you will see an outcome in the middle of the screen, as shown below.</p>"
                 + "<img class='exampleReward' src='images/example_reward.png'><br><br>",
-                "<p><b>Winning very much depends on the location of the card you chose - some locations are better than others in the current part.</b><br>"
-                + "Your task is to find out which location is the best in each part at any time and choose it.<br><br> <b> Please note that the winning chances of one location are unrelated to the winning chances of another.</b><br> Learning about one location does not tell you anything about the other locations.</p>",
+                "<p><b>Winning very much depends on the location of the card you chose - some locations are better than others in the current round.</b><br>"
+                + "Your task is to find out which location is the best in each round at any time and choose it.<br><br> <b> Please note that the winning chances of one location are unrelated to the winning chances of another.</b><br> Learning about one location does not tell you anything about the other locations.</p>",
                 "<p style='text-align:center'><u>Three important things to remember:</u><br>"
                 + "1. <b>How good a location is can change along with the game - </b> somewhat like the value of market products that sometimes is worth more and sometimes less."
                 + "<br><br>2.<b> Only the locations are related to your chances of winning - </b> the identity of the card does not influence the chances of winning a coin.<br><br>"
@@ -387,39 +387,39 @@
 
             if (key_selected == 0) {
                 if (practice_number != -1) { //we're practicing
-                    left_card = practice_reward_images[block_type][card_selected]
+                    left_to_show = practice_reward_images[block_type][card_selected]
                 }
                 else{
-                    left_card = reward_deck_images[block_type][card_selected]
+                    left_to_show = reward_deck_images[block_type][card_selected]
                 }
-                left_with_tag = "<img class='card_left' src='" + left_card + "'>"
+                left_with_tag = "<img class='card_left' src='" + left_to_show + "'>"
             }
             else if (key_selected == 1) {
                 if (practice_number != -1) { //we're practicing
-                    mid_left_card = practice_reward_images[block_type][card_selected]
+                    mid_left_to_show = practice_reward_images[block_type][card_selected]
                 }
                 else{
-                    mid_left_card = reward_deck_images[block_type][card_selected]
+                    mid_left_to_show = reward_deck_images[block_type][card_selected]
                 }
-                mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_card + "'>"
+                mid_left_with_tag = "<img class='card_middle_left' src='" + mid_left_to_show + "'>"
             }
             else if (key_selected == 2) {
                 if (practice_number != -1) { //we're practicing
-                    mid_right_card = practice_reward_images[block_type][card_selected]
+                    mid_right_to_show = practice_reward_images[block_type][card_selected]
                 }
                 else{
-                    mid_right_card = reward_deck_images[block_type][card_selected]
+                    mid_right_to_show = reward_deck_images[block_type][card_selected]
                 }
-                mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_card + "'>"
+                mid_right_with_tag = "<img class='card_middle_right' src='" + mid_right_to_show + "'>"
             }
             else if (key_selected == 3) {
                 if (practice_number != -1) { //we're practicing
-                    right_card = practice_reward_images[block_type][card_selected]
+                    right_to_show = practice_reward_images[block_type][card_selected]
                 }
                 else{
-                    right_card = reward_deck_images[block_type][card_selected]
+                    right_to_show = reward_deck_images[block_type][card_selected]
                 }
-                right_with_tag = "<img class='card_right' src='" + right_card + "'>"
+                right_with_tag = "<img class='card_right' src='" + right_to_show + "'>"
             }
             else if (invalid==true) {
                 invalid=false
@@ -427,7 +427,7 @@
             }
             else if( invalid_from_all_keyboard==true) {
                 invalid_from_all_keyboard=false
-                return '<div style="font-size:40px; position: absolute; left: 220px; top: 300px;">Please choose only between "S", "F", "H" and "K"!</div>'+ '<p><b>Press SPACE to continue</b></p>'
+                return '<div style="font-size:40px; position: absolute; left: 180px; top: 300px;">Please choose only between "S", "F", "H" and "K"!</div>'+ '<p><b>Press SPACE to continue</b></p>'
             }
             else {
                 return '<div style="font-size:40px; position: absolute; left: 420px; top: 300px;">Please respond faster!</div>'  + '<p><b>Press SPACE to continue</b></p>'
@@ -445,6 +445,115 @@
         function images_for_block_start() {
             images = test_deck_images[block_type]
             return images
+        }
+
+        function insert_props_to_data(data, card_selected){
+            data.color_selected = -1
+            data.shape_selected = -1
+            data.texture_selected = 'blank'
+            data.color_not_selected = -1
+            data.shape_not_selected = -1
+            data.texture_not_selected = 'blank'
+            if (card_selected == 'images/test_elements/pink_blank_triangle.png'){
+                data.color_selected = 'pink'
+                data.color_not_selected = 'green'
+                data.shape_selected = 'triangle'
+                data.shape_not_selected = 'triangle'
+            }
+            else if (card_selected == 'images/test_elements/green_blank_triangle.png'){
+                data.color_selected = 'green'
+                data.color_not_selected = 'pink'
+                data.shape_selected = 'triangle'
+                data.shape_not_selected = 'triangle'
+            }
+            else if (card_selected == 'images/test_elements/red_rhombus.png'){
+                data.color_selected = 'red'
+                data.color_not_selected = 'yellow'
+                data.shape_selected = 'rhombus'
+                data.shape_not_selected = 'pentagon'
+            }
+            else if (card_selected == 'images/test_elements/yellow_hexagon.png'){
+                data.color_selected = 'yellow'
+                data.color_not_selected = 'red'
+                data.shape_selected = 'pentagon'
+                data.shape_not_selected = 'rhombus'
+            }
+            else if (card_selected == 'images/test_elements/red_hexagon.png'){
+                data.color_selected = 'red'
+                data.color_not_selected = 'yellow'
+                data.shape_selected = 'pentagon'
+                data.shape_not_selected = 'rhombus'
+            }
+            else if (card_selected == 'images/test_elements/yellow_rhombus.png'){
+                data.color_selected = 'yellow'
+                data.color_not_selected = 'red'
+                data.shape_selected = 'rhombus'
+                data.shape_not_selected = 'pentagon'
+            }
+            else if (card_selected == 'images/test_elements/blue_circle_x.png'){
+                data.color_selected = 'blue'
+                data.color_not_selected = 'orange'
+                data.shape_selected = 'circle'
+                data.shape_not_selected = 'square'
+                data.texture_selected = 'x'
+                data.texture_not_selected = '+'
+            }
+            else if (card_selected == 'images/test_elements/orange_square_plus.png'){
+                data.color_selected = 'orange'
+                data.color_not_selected = 'blue'
+                data.shape_selected = 'square'
+                data.shape_not_selected = 'circle'
+                data.texture_selected = '+'
+                data.texture_not_selected = 'x'
+            }
+            else if (card_selected == 'images/test_elements/orange_circle_x.png'){
+                data.color_selected = 'orange'
+                data.color_not_selected = 'blue'
+                data.shape_selected = 'circle'
+                data.shape_not_selected = 'square'
+                data.texture_selected = 'x'
+                data.texture_not_selected = '+'
+            }
+            else if (card_selected == 'images/test_elements/blue_square_plus.png'){
+                data.color_selected = 'blue'
+                data.color_not_selected = 'orange'
+                data.shape_selected = 'square'
+                data.shape_not_selected = 'circle'
+                data.texture_selected = '+'
+                data.texture_not_selected = 'x'
+            }
+            else if (card_selected == 'images/test_elements/blue_square_x.png'){
+                data.color_selected = 'blue'
+                data.color_not_selected = 'orange'
+                data.shape_selected = 'square'
+                data.shape_not_selected = 'circle'
+                data.texture_selected = 'x'
+                data.texture_not_selected = '+'
+            }
+            else if (card_selected == 'images/test_elements/orange_circle_plus.png'){
+                data.color_selected = 'orange'
+                data.color_not_selected = 'blue'
+                data.shape_selected = 'circle'
+                data.shape_not_selected = 'square'
+                data.texture_selected = '+'
+                data.texture_not_selected = 'x'
+            }
+            else if (card_selected == 'images/test_elements/orange_square_x.png'){
+                data.color_selected = 'orange'
+                data.color_not_selected = 'blue'
+                data.shape_selected = 'square'
+                data.shape_not_selected = 'circle'
+                data.texture_selected = 'x'
+                data.texture_not_selected = '+'
+            }
+            else if (card_selected == 'images/test_elements/blue_circle_plus.png'){
+                data.color_selected = 'blue'
+                data.color_not_selected = 'orange'
+                data.shape_selected = 'circle'
+                data.shape_not_selected = 'square'
+                data.texture_selected = '+'
+                data.texture_not_selected = 'x'
+            }
         }
 
         /*This function downloads the data */
@@ -566,20 +675,10 @@
             stimulus: function () {
                 block_type=(block_type+1)%3;
                 FB_matrix= jsPsych.randomization.shuffle(FB_matrix);
-                start_block_str= '<p><b><u>Test block ' + (block + 1) + ' out of ' + (blocks) + '</u></b></p>' + '<p style="text-align: center"> You will now start a test block. Below are the cards that can appear in this round.</p>'
-                    + '<p style="text-align: center">Use the response key that matches the location of the card you select ("S", "F", "H" or "K", in correspondence) to make your selection. <br> Please do your best to win as many coins as possible!<br> </p>'
-                    + '<p style="text-align: center">Remember that: <br> 1) How "good" each location is can change along the round <br> 2) Only the location of the card (not the card that appeared there) predicts an outcome <br> 3) The chance that each location will give you money has nothing to do with the other locations </p>'
+                start_block_str= '<p><b><u>Test round ' + (block + 1) + ' out of ' + (blocks) + '</u></b></p>' + '<p style="text-align: center"> You will now start a test round.</p>'
+                    + '<p style="text-align: center">Use the response key that matches the location of the card you select ("S", "F", "H" or "K", in correspondence) to make your selection. <br> <b>Please do your best to win as many coins as possible!</b><br> </p>'
+                    + '<p style="text-align: center"><u>Remember that:</u> <br> 1) How "good" each location is can change along the round <br> 2) Only the location of the card (not the card that appeared there) predicts an outcome <br> 3) The chance that each location will give you money has nothing to do with the other locations </p>'
                     + '<p><b>Press SPACE to start</b></p>'
-                if (block_type==0){
-                    start_block_str+='<img src="' + images_for_block_start()[0] + '" class="block_example">  ' + '<img src="' + images_for_block_start()[1] + '" class="block_example">    '
-                }
-                else if (block_type==1){
-                    start_block_str+= '<img src="' + images_for_block_start()[0] + '" class="block_example">  ' + '<img src="' + images_for_block_start()[1] + '" class="block_example">    ' + '<img src="' + images_for_block_start()[2] + '" class="block_example">    ' + '<img src="' + images_for_block_start()[3] + '" class="block_example">  '
-                }
-                else{
-                    start_block_str+= '<img src="' + images_for_block_start()[0] + '" class="block_example">  ' + '<img src="' + images_for_block_start()[1] + '" class="block_example">    ' + '<img src="' + images_for_block_start()[2] + '" class="block_example">    ' + '<img src="' + images_for_block_start()[3] + '" class="block_example">  '
-                    + '<img src="' + images_for_block_start()[4] + '" class="block_example">  ' + '<img src="' + images_for_block_start()[5] + '" class="block_example">    ' + '<img src="' + images_for_block_start()[6] + '" class="block_example">    ' + '<img src="' + images_for_block_start()[7] + '" class="block_example">'
-                }
                 return start_block_str;
             },
             choices: [32]
@@ -614,17 +713,41 @@
                 data.key_selected = selected
                 data.first_loc = first_loc
                 data.second_loc = second_loc
+                if (selected==first_loc){//first_loc was selected
+                    not_selected = second_loc
+                }
+                else{
+                    not_selected = first_loc
+                }
+                data.card_selected = -1;
+                data.card_not_selected = -1;
                 if (selected == 0) {
                     data.card_selected = images_for_block_start().indexOf(left_card)
+                    insert_props_to_data(data, left_card)
                 }
                 else if (selected == 1) {
                     data.card_selected = images_for_block_start().indexOf(mid_left_card)
+                    insert_props_to_data(data, mid_left_card)
                 }
                 else if (selected == 2) {
                     data.card_selected = images_for_block_start().indexOf(mid_right_card)
+                    insert_props_to_data(data, mid_right_card)
                 }
                 else if (selected == 3) {
                     data.card_selected = images_for_block_start().indexOf(right_card)
+                    insert_props_to_data(data, right_card)
+                }
+                if (not_selected == 0) {
+                    data.card_not_selected = images_for_block_start().indexOf(left_card)
+                }
+                else if (not_selected == 1) {
+                    data.card_not_selected = images_for_block_start().indexOf(mid_left_card)
+                }
+                else if (not_selected == 2) {
+                    data.card_not_selected = images_for_block_start().indexOf(mid_right_card)
+                }
+                else if (not_selected == 3) {
+                    data.card_not_selected = images_for_block_start().indexOf(right_card)
                 }
             }
         }
@@ -647,22 +770,42 @@
                 data.second_loc = second_loc
                 if (selected==first_loc){//first_loc was selected
                     data.prob_not_selected = FB_matrix[second_loc][current_cards_exp_trial];
+                    not_selected = second_loc
                 }
                 else{
                     data.prob_not_selected = FB_matrix[first_loc][current_cards_exp_trial];
+                    not_selected = first_loc
                 }
                 current_cards_exp_trial+=1;
+                data.card_selected = -1;
+                data.card_not_selected = -1;
                 if (selected == 0) {
                     data.card_selected = images_for_block_start().indexOf(left_card)
+                    insert_props_to_data(data, left_card)
                 }
                 else if (selected == 1) {
                     data.card_selected = images_for_block_start().indexOf(mid_left_card)
+                    insert_props_to_data(data, mid_left_card)
                 }
                 else if (selected == 2) {
                     data.card_selected = images_for_block_start().indexOf(mid_right_card)
+                    insert_props_to_data(data, mid_right_card)
                 }
                 else if (selected == 3) {
                     data.card_selected = images_for_block_start().indexOf(right_card)
+                    insert_props_to_data(data, right_card)
+                }
+                if (not_selected == 0) {
+                    data.card_not_selected = images_for_block_start().indexOf(left_card)
+                }
+                else if (not_selected == 1) {
+                    data.card_not_selected = images_for_block_start().indexOf(mid_left_card)
+                }
+                else if (not_selected == 2) {
+                    data.card_not_selected = images_for_block_start().indexOf(mid_right_card)
+                }
+                else if (not_selected == 3) {
+                    data.card_not_selected = images_for_block_start().indexOf(right_card)
                 }
             }
         }
@@ -671,7 +814,7 @@
             type: 'html-keyboard-response',
             stimulus: function () {
     
-                finish_block_string = '<p>Good job!</p>' + '<p style="text-align: center"><br> Test block ' + (block + 1) + ' out of ' + (blocks) + ' is over.'
+                finish_block_string = '<p>Good job!</p>' + '<p style="text-align: center"><br> Test round ' + (block + 1) + ' out of ' + (blocks) + ' is over.'
                 if (block != 2) {
                     finish_block_string += ' You can stretch a little and take a short break while sitting in front of the screen, if needed.</p><p> <br><br><br><b>Press SPACE to continue</b>  </p>'
                 }
@@ -686,6 +829,10 @@
         }
 
         var finish_learning = {
+            on_start: function () {
+                if (document.querySelector('#cursor-toggle') != null)
+                    document.querySelector('#cursor-toggle').remove()
+            },
             type: 'html-button-response',
             stimulus: function () {
                 bonus = sum_of_reward * 0.007

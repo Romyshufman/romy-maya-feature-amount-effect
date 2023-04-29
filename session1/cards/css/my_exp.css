@@ -89,6 +89,13 @@
         width: 130px;
     }
 
+    .exampleSlot {
+        position: fixed;
+        height: 310px;
+        width: 310px;
+        left: auto + 30px
+    }
+
     .exampleDeck {
         height: 130px;
         width: 130px;

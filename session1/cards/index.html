@@ -86,38 +86,38 @@
 
         var example_deck0=['images/practice_elements/conversation_green_blank.png', 'images/practice_elements/conversation_ocean_blank.png']
         var example_deck1= ['images/practice_elements/heart_bluish_blank.png','images/practice_elements/star_purple_blank.png', 'images/practice_elements/heart_purple_blank.png','images/practice_elements/star_bluish_blank.png']
-        var example_deck2= ['images/practice_elements/parallel_brown_plus.png', 'images/practice_elements/trapezoid_fuchsia_x.png', 'images/practice_elements/parallel_fuchsia_plus.png', 'images/practice_elements/trapezoid_brown_x.png', 'images/practice_elements/trapezoid_brown_plus.png', 'images/practice_elements/parallel_fuchsia_x.png', 'images/practice_elements/trapezoid_fuchsia_plus.png', 'images/practice_elements/parallel_brown_x.png']
+        var example_deck2= ['images/practice_elements/parallel_torq_nut.png', 'images/practice_elements/trapezoid_fuchsia_banana.png', 'images/practice_elements/parallel_fuchsia_nut.png', 'images/practice_elements/trapezoid_torq_banana.png', 'images/practice_elements/trapezoid_torq_nut.png', 'images/practice_elements/parallel_fuchsia_banana.png', 'images/practice_elements/trapezoid_fuchsia_nut.png', 'images/practice_elements/parallel_torq_banana.png']
         var practice_deck_images = [example_deck0,example_deck1,example_deck2]
 
         var example_reward0=['images/practice_reward/conversation_green_blank.png', 'images/practice_reward/conversation_ocean_blank.png']
         var example_reward1= ['images/practice_reward/heart_bluish_blank.png','images/practice_reward/star_purple_blank.png', 'images/practice_reward/heart_purple_blank.png','images/practice_reward/star_bluish_blank.png']
-        var example_reward2= ['images/practice_reward/parallel_brown_plus.png', 'images/practice_reward/trapezoid_fuchsia_x.png', 'images/practice_reward/parallel_fuchsia_plus.png', 'images/practice_reward/trapezoid_brown_x.png', 'images/practice_reward/trapezoid_brown_plus.png', 'images/practice_reward/parallel_fuchsia_x.png', 'images/practice_reward/trapezoid_fuchsia_plus.png', 'images/practice_reward/parallel_brown_x.png']
+        var example_reward2= ['images/practice_reward/parallel_torq_nut.png', 'images/practice_reward/trapezoid_fuchsia_banana.png', 'images/practice_reward/parallel_fuchsia_nut.png', 'images/practice_reward/trapezoid_torq_banana.png', 'images/practice_reward/trapezoid_torq_nut.png', 'images/practice_reward/parallel_fuchsia_banana.png', 'images/practice_reward/trapezoid_fuchsia_nut.png', 'images/practice_reward/parallel_torq_banana.png']
         var practice_reward_images = [example_reward0,example_reward1,example_reward2]
 
         //2D array - array i contains the cards for block type i
-        var test_deck0=['images/test_elements/pink_blank_triangle.png', 'images/test_elements/green_blank_triangle.png']
-        var test_deck1= ['images/test_elements/red_rhombus.png', 'images/test_elements/yellow_hexagon.png','images/test_elements/red_hexagon.png', 'images/test_elements/yellow_rhombus.png']
-        var test_deck2= ['images/test_elements/blue_circle_x.png',
-        'images/test_elements/orange_square_plus.png',
-         'images/test_elements/orange_circle_x.png',
-         'images/test_elements/blue_square_plus.png',
-         'images/test_elements/blue_square_x.png',
-         'images/test_elements/orange_circle_plus.png',
-          'images/test_elements/orange_square_x.png',
-           'images/test_elements/blue_circle_plus.png' 
+        var test_deck0=['images/test_elements/pink_triangle.png', 'images/test_elements/green_triangle.png']
+        var test_deck1= ['images/test_elements/red_rhombus.png', 'images/test_elements/yellow_pentagon.png','images/test_elements/red_pentagon.png', 'images/test_elements/yellow_rhombus.png']
+        var test_deck2= ['images/test_elements/blue_circle_heart.png',
+        'images/test_elements/orange_square_star.png',
+         'images/test_elements/orange_circle_heart.png',
+         'images/test_elements/blue_square_star.png',
+         'images/test_elements/blue_square_heart.png',
+         'images/test_elements/orange_circle_star.png',
+          'images/test_elements/orange_square_heart.png',
+           'images/test_elements/blue_circle_star.png' 
             ]
         var test_deck_images = [test_deck0,test_deck1,test_deck2]
 
-        var reward_deck0=['images/reward_elements/pink_blank_triangle.png', 'images/reward_elements/green_blank_triangle.png']
-        var reward_deck1= ['images/reward_elements/red_rhombus.png', 'images/reward_elements/yellow_hexagon.png','images/reward_elements/red_hexagon.png', 'images/reward_elements/yellow_rhombus.png']
-        var reward_deck2= ['images/reward_elements/blue_circle_x.png',
-        'images/reward_elements/orange_square_plus.png',
-         'images/reward_elements/orange_circle_x.png',
-         'images/reward_elements/blue_square_plus.png',
-         'images/reward_elements/blue_square_x.png',
-         'images/reward_elements/orange_circle_plus.png',
-          'images/reward_elements/orange_square_x.png',
-           'images/reward_elements/blue_circle_plus.png' 
+        var reward_deck0=['images/reward_elements/pink_triangle.png', 'images/reward_elements/green_triangle.png']
+        var reward_deck1= ['images/reward_elements/red_rhombus.png', 'images/reward_elements/yellow_pentagon.png','images/reward_elements/red_pentagon.png', 'images/reward_elements/yellow_rhombus.png']
+        var reward_deck2= ['images/reward_elements/blue_circle_heart.png',
+        'images/reward_elements/orange_square_star.png',
+         'images/reward_elements/orange_circle_heart.png',
+         'images/reward_elements/blue_square_star.png',
+         'images/reward_elements/blue_square_heart.png',
+         'images/reward_elements/orange_circle_star.png',
+          'images/reward_elements/orange_square_heart.png',
+           'images/reward_elements/blue_circle_star.png' 
             ]
         var reward_deck_images = [reward_deck0,reward_deck1,reward_deck2]
 
@@ -178,30 +178,31 @@
             type: "instructions",
             pages: ["<p><b><u>Welcome to the slot machine game</u></b></p>"
                 + "<p style='text-align:center'>Your winnings in this game will earn you additional payment bonus for the study."
-                + " If no extra money will be earned in the card game, you will still get £2.5 for completing this part of the study."
+                + " If no extra money will be earned in the game, you will still get £2.5 for completing this part of the study."
                 + " However, <b>you can gain up to an extra £0.9 based on winnings in the game. <br> Money will be given only if you complete the second part of the study tomorrow!</b></p>",
             "<p style='text-align:center'> We will now provide instructions regarding the slot machine game. Please read them carefully. <br>"
             + "Feel free to go back and forth between the screens.</p> "
             + "<p style='text-align:center'>At the end of the instructions, <b>we will ask you to complete a short quiz about them</b>, to make sure everything is well understood.</p>",
             "<p style='text-align:center'> In the game to follow, you will be presented with <b>four slot machines</b>, each of them will look as shown below.</p>" +
-            "<img class='exampleSlot' src='images/slot_machine.png' >",
-            "<p style='text-align:center'> Below is an example of four symbols, very much like the symbols in the game to follow. <b>The card-decks in the game, though, will vary in size - 2-card, 4-card or 8-card decks.</b> </p>" +
-            "<img class='exampleDeck' src='images/practice_elements/heart_bluish_blank.png' >"+"<img class='exampleDeck' src='images/practice_elements/star_purple_blank.png' >"+
-            "<img class='exampleDeck' src='images/practice_elements/heart_purple_blank.png' >"+"<img class='exampleDeck' src='images/practice_elements/star_bluish_blank.png' >",
-            "<p> On each step, only two cards from the card deck will be offered, in only two of the four possible locations.<br><br>"
+            "<img class='exampleSlot' src='images/slot_machine.png' >"
+            + "<p style='text-align:center'> On every step, you will be required to choose one of them, as explained next.</p>",
+            "<p> On each step, icons will pop on the screen of <b>two of the four slot machines.</b> These are the machines you will be able to choose between in the current step.<br><br>"
             + "The keys you will need to use in order to make a selection are <b>S, F, H and K</b>, as specified in the examples following.</p>",
-            "<p>Here, for example, you will be able to select the <b>left card by pressing 'S'</b> and the <b>right card by pressing 'K'</b> on your keyboard.</p>"
-            + "<img class='exampleLoc' src='images/example1.png' >",
+            "<p>Here, for example, you will be able to select the <b>left machine by pressing 'S'</b> and the <b>right machine by pressing 'K'</b> on your keyboard.</p>"
+            + "<img class='exampleDeck' src='images/practice_elements/heart_bluish_blank.png' >"+"<img class='exampleDeck' src=" + background + " >"+
+            "<img class='exampleDeck' src=" + background + " >"+"<img class='exampleDeck' src='images/practice_elements/star_purple_blank.png' >",
             "<p>Here, however, you will be able to select the <b>middle-left card by pressing 'F'</b> and the <b>middle-right card by pressing 'H'</b> on your keyboard.</p>"
-            + "<img class='exampleLoc' src='images/example2.png' >",
-            "<p style='text-align:left'>After selecting the card, you will see an outcome in the middle of the screen, as shown below.</p>"
-            + "<img class='exampleReward' src='images/example_reward.png'><br><br>",
-            "<p><b>Winning very much depends on the location of the card you chose - some locations are better than others in the current round.</b><br>"
-            + "Your task is to find out which location is the best in each round at any time and choose it.<br><br> <b> Please note that the winning chances of one location are unrelated to the winning chances of another.</b><br> Learning about one location does not tell you anything about the other locations.</p>",
+            + "<img class='exampleDeck' src=" + background + " >"+"<img class='exampleDeck' src='images/practice_elements/star_bluish_blank.png' >"+
+            "<img class='exampleDeck' src='images/practice_elements/heart_purple_blank.png' >"+"<img class='exampleDeck' src=" + background + " >",
+            "<p style='text-align:left'>After selecting a machine, you will see an outcome in the middle of the screen, as shown below.</p>"
+            + "<img class='reward' src='images/won1-no-back1.png'><br>" + "<img class='exampleDeck' src=" + background + " >"+"<img class='exampleDeck' src=" + background + " >"+
+            "<img class='exampleDeck' src='images/practice_reward/heart_purple_blank.png' >"+"<img class='exampleDeck' src=" + background + " ><br><br>",
+            "<p><b>Winning very much depends on the slot machine you chose - some machines are better than others in the current round.</b><br>"
+            + "Your task is to find out which machine has the highest chance of granting a coin at any time and choose it.<br><br> <b> Please note that the winning chances of one machine are unrelated to the winning chances of another.</b><br> Learning about one machine does not tell you anything about the other machines.</p>",
             "<p style='text-align:center'><u>Three important things to remember:</u><br>"
-            + "1. <b>How good a location is can change along with the game - </b> somewhat like the value of market products that sometimes is worth more and sometimes less."
-            + "<br><br>2.<b> Only the locations are related to your chances of winning - </b> the identity of the card does not influence the chances of winning a coin.<br><br>"
-            + " 3. <b>The chance that each location will give you money has nothing to do with the other locations - </b> you can't learn about one location from the money rewards you got for another.</p>"],
+            + "1. <b>How good a slot machine is can change along with the game - </b> somewhat like the value of market products that sometimes is worth more and sometimes less."
+            + "<br><br>2.<b> Only the machines are related to your chances of winning - </b> the identity of the icon on its screen does not influence the chances of winning a coin.<br><br>"
+            + " 3. <b>The chance that each machine will give you money has nothing to do with the other machines - </b> you can't learn about one machine from the money rewards you got from another.</p>"],
             show_clickable_nav: true
         };
 
@@ -524,13 +525,13 @@
             data.color_not_selected = -1
             data.shape_not_selected = -1
             data.texture_not_selected = 'blank'
-            if (card_selected == 'images/test_elements/pink_blank_triangle.png'){
+            if (card_selected == 'images/test_elements/pink_triangle.png'){
                 data.color_selected = 'pink'
                 data.color_not_selected = 'green'
                 data.shape_selected = 'triangle'
                 data.shape_not_selected = 'triangle'
             }
-            else if (card_selected == 'images/test_elements/green_blank_triangle.png'){
+            else if (card_selected == 'images/test_elements/green_triangle.png'){
                 data.color_selected = 'green'
                 data.color_not_selected = 'pink'
                 data.shape_selected = 'triangle'
@@ -542,13 +543,13 @@
                 data.shape_selected = 'rhombus'
                 data.shape_not_selected = 'pentagon'
             }
-            else if (card_selected == 'images/test_elements/yellow_hexagon.png'){
+            else if (card_selected == 'images/test_elements/yellow_pentagon.png'){
                 data.color_selected = 'yellow'
                 data.color_not_selected = 'red'
                 data.shape_selected = 'pentagon'
                 data.shape_not_selected = 'rhombus'
             }
-            else if (card_selected == 'images/test_elements/red_hexagon.png'){
+            else if (card_selected == 'images/test_elements/red_pentagon.png'){
                 data.color_selected = 'red'
                 data.color_not_selected = 'yellow'
                 data.shape_selected = 'pentagon'
@@ -560,69 +561,69 @@
                 data.shape_selected = 'rhombus'
                 data.shape_not_selected = 'pentagon'
             }
-            else if (card_selected == 'images/test_elements/blue_circle_x.png'){
+            else if (card_selected == 'images/test_elements/blue_circle_heart.png'){
                 data.color_selected = 'blue'
                 data.color_not_selected = 'orange'
                 data.shape_selected = 'circle'
                 data.shape_not_selected = 'square'
-                data.texture_selected = 'x'
-                data.texture_not_selected = '+'
+                data.texture_selected = 'heart'
+                data.texture_not_selected = 'star'
             }
-            else if (card_selected == 'images/test_elements/orange_square_plus.png'){
+            else if (card_selected == 'images/test_elements/orange_square_star.png'){
                 data.color_selected = 'orange'
                 data.color_not_selected = 'blue'
                 data.shape_selected = 'square'
                 data.shape_not_selected = 'circle'
-                data.texture_selected = '+'
-                data.texture_not_selected = 'x'
+                data.texture_selected = 'star'
+                data.texture_not_selected = 'heart'
             }
-            else if (card_selected == 'images/test_elements/orange_circle_x.png'){
-                data.color_selected = 'orange'
-                data.color_not_selected = 'blue'
-                data.shape_selected = 'circle'
-                data.shape_not_selected = 'square'
-                data.texture_selected = 'x'
-                data.texture_not_selected = '+'
-            }
-            else if (card_selected == 'images/test_elements/blue_square_plus.png'){
-                data.color_selected = 'blue'
-                data.color_not_selected = 'orange'
-                data.shape_selected = 'square'
-                data.shape_not_selected = 'circle'
-                data.texture_selected = '+'
-                data.texture_not_selected = 'x'
-            }
-            else if (card_selected == 'images/test_elements/blue_square_x.png'){
-                data.color_selected = 'blue'
-                data.color_not_selected = 'orange'
-                data.shape_selected = 'square'
-                data.shape_not_selected = 'circle'
-                data.texture_selected = 'x'
-                data.texture_not_selected = '+'
-            }
-            else if (card_selected == 'images/test_elements/orange_circle_plus.png'){
+            else if (card_selected == 'images/test_elements/orange_circle_heart.png'){
                 data.color_selected = 'orange'
                 data.color_not_selected = 'blue'
                 data.shape_selected = 'circle'
                 data.shape_not_selected = 'square'
-                data.texture_selected = '+'
-                data.texture_not_selected = 'x'
+                data.texture_selected = 'heart'
+                data.texture_not_selected = 'star'
             }
-            else if (card_selected == 'images/test_elements/orange_square_x.png'){
+            else if (card_selected == 'images/test_elements/blue_square_star.png'){
+                data.color_selected = 'blue'
+                data.color_not_selected = 'orange'
+                data.shape_selected = 'square'
+                data.shape_not_selected = 'circle'
+                data.texture_selected = 'star'
+                data.texture_not_selected = 'heart'
+            }
+            else if (card_selected == 'images/test_elements/blue_square_heart.png'){
+                data.color_selected = 'blue'
+                data.color_not_selected = 'orange'
+                data.shape_selected = 'square'
+                data.shape_not_selected = 'circle'
+                data.texture_selected = 'heart'
+                data.texture_not_selected = 'star'
+            }
+            else if (card_selected == 'images/test_elements/orange_circle_star.png'){
+                data.color_selected = 'orange'
+                data.color_not_selected = 'blue'
+                data.shape_selected = 'circle'
+                data.shape_not_selected = 'square'
+                data.texture_selected = 'star'
+                data.texture_not_selected = 'heart'
+            }
+            else if (card_selected == 'images/test_elements/orange_square_heart.png'){
                 data.color_selected = 'orange'
                 data.color_not_selected = 'blue'
                 data.shape_selected = 'square'
                 data.shape_not_selected = 'circle'
-                data.texture_selected = 'x'
-                data.texture_not_selected = '+'
+                data.texture_selected = 'heart'
+                data.texture_not_selected = 'star'
             }
-            else if (card_selected == 'images/test_elements/blue_circle_plus.png'){
+            else if (card_selected == 'images/test_elements/blue_circle_star.png'){
                 data.color_selected = 'blue'
                 data.color_not_selected = 'orange'
                 data.shape_selected = 'circle'
                 data.shape_not_selected = 'square'
-                data.texture_selected = '+'
-                data.texture_not_selected = 'x'
+                data.texture_selected = 'star'
+                data.texture_not_selected = 'heart'
             }
         }
 
@@ -674,7 +675,7 @@
                 right_with_tag = "<img class='card_right' src='" + background + "'>"
                 return left_with_tag + mid_left_with_tag + mid_right_with_tag + right_with_tag;
             },
-            choices: jsPsych.NO_KEYS,
+            choices: "NO_KEYS",            
             trial_duration: 900
         }
 
@@ -694,7 +695,7 @@
         var practice_choice1 = {
             type: "html-keyboard-response",
             stimulus: show_choice,
-            choices: jsPsych.NO_KEYS,
+            choices: "NO_KEYS",            
             trial_duration: 500,
             data: { phase: 'practice', trial_name: 'choice1', trial_num: function () { return current_cards_practice_trial } },
             on_finish: function (data) {
@@ -720,6 +721,7 @@
                 return show_reward()
             },
             choices: [32],
+            trial_duration: 6000,
             data: { phase: 'practice', trial_name: 'reward1', trial_num: function () { return current_cards_practice_trial } }
             , on_finish: function (data) {
                 data.reward = reward;
@@ -774,7 +776,7 @@
         var exp_choice1 = {
             type: "html-keyboard-response",
             stimulus: show_choice,
-            choices: jsPsych.NO_KEYS,
+            choices: "NO_KEYS",
             trial_duration: 500,
             //trial_duration: 3000,
             data: { phase: 'exp', trial_name: 'choice1', trial_num: function () { return current_cards_exp_trial },
@@ -827,6 +829,7 @@
                 return show_reward()
             },
             choices: [32],
+            trial_duration: 6000,
             data: {
                 phase: 'exp', trial_name: 'reward1', trial_num: function () { return current_cards_exp_trial },
                 block: function () { return block }, block_type: function () { return block_type}
@@ -936,16 +939,16 @@
 
         var test_procedure = {
             timeline: [fixation_cards, exp_cards1, exp_choice1, exp_reward1],
-            repetitions: 5 //8.15 sec per trial on avg - 50 trials per block. 6.8 minutes on avg per block
+            repetitions: 3 //8.15 sec per trial on avg - 50 trials per block. 6.8 minutes on avg per block
         }
         var test_blocks = {
             timeline: [start_block, test_procedure, finish_block],
-            repetitions: 1
+            repetitions: 3
         };
 
         var full_procedure = {
-            //timeline: [instructions_loop, start_exp, test_blocks, finish_learning]
-            timeline: [start_exp, test_blocks, finish_learning]
+            timeline: [instructions_loop, start_exp, test_blocks, finish_learning]
+            //timeline: [start_exp, test_blocks, finish_learning]
         }
         timeline.push(full_procedure)
 

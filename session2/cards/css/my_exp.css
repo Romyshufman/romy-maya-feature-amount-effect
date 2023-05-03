@@ -105,6 +105,11 @@ img.fullscreen {
     width: 566px;
 }
 
+.exampleSlot {
+    height: 200px;
+    width: 200px;
+}
+
 img.card_left {
     position: fixed;
     height: 130px;
